@@ -26,6 +26,11 @@ If you need to update `npm`, you can make it using `npm`! Cool right? After runn
     Then run the project using 
     $ node index.js
 
+## Note
+
+    I've used local MongoDB server as database, if you've not installed MongoDB on your system,
+    please install the following from https://www.mongodb.com/try/download/community 
+
 ## Screenshots
 
 ![ScreenShot](public/ss.png)
