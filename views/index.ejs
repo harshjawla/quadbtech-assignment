@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HodlInfo</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #191d28;
+            font-family: 'Oswald', sans-serif;
+        }
+
+        .light {
+            background-color: white;
+        }
+
+        #ring-container {
+            position: relative;
+            width: 40px;
+            height: 40px;
+        }
+
+        #ring {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 4px solid #5DC7C2;
+            /* Ring color */
+            border-radius: 50%;
+            animation: spin 60s linear infinite;
+        }
+
+        #ring-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 18px;
+            color: #5DC7C2;
+            /* Text color */
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 34px;
+        }
+
+        /* Hide default HTML checkbox */
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        /* The slider */
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #f8f9fa;
+            -webkit-transition: .4s;
+            transition: .4s;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 26px;
+            width: 26px;
+            left: 4px;
+            bottom: 4px;
+            background-color: #5DC7C2;
+            -webkit-transition: .4s;
+            transition: .4s;
+        }
+
+        input:checked+.slider {
+            background-color: #2E3241;
+        }
+
+        input:focus+.slider {
+            box-shadow: 0 0 1px #2E3241;
+        }
+
+        input:checked+.slider:before {
+            -webkit-transform: translateX(26px);
+            -ms-transform: translateX(26px);
+            transform: translateX(26px);
+        }
+
+        /* Rounded sliders */
+        .slider.round {
+            border-radius: 34px;
+        }
+
+        .slider.round:before {
+            border-radius: 50%;
+        }
+
+        .others {
+            display: flex;
+            gap: 20px;
+        }
+
+        a {
+            text-decoration: none;
+            color: black;
+            font-size: 60px;
+            color: #5DC7C2;
+            letter-spacing: 5px;
+        }
+
+        nav,
+        .data {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            margin-left: 40px;
+            margin-right: 40px;
+        }
+
+        .data {
+            margin-left: 80px;
+            margin-right: 80px;
+            /* height: 100%; */
+        }
+
+        p {
+            text-align: center;
+            color: #6c757d;
+            font-size: 20px;
+            padding: 10px;
+        }
+
+        .btn {
+            padding: 10px;
+            border: none;
+            background-color: #2E3241;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: medium;
+            color: White;
+        }
+
+        .btnlight {
+            color: black;
+            background-color: #f8f9fa;
+        }
+
+        section {
+            height: 35vh;
+        }
+
+        section h1 {
+            color: #5DC7C2;
+            font-size: 40px;
+            padding: 5px;
+            text-align: center;
+        }
+
+        .big {
+            font-size: 70px;
+            color: white;
+            padding: 5px;
+        }
+
+        .bigl {
+            color: black;
+        }
+
+        .bigp {
+            font-size: 30px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0 20px;
+            padding-left: 25px;
+            padding-right: 25px;
+        }
+
+        th,
+        td {
+            text-align: center;
+            font-size: x-large;
+            font-weight: bold;
+            /* border: 1px solid #ddd; */
+        }
+
+        th {
+            color: #6c757d;
+        }
+
+        td {
+            background-color: #2E3241;
+            color: White;
+            padding: 15px;
+        }
+
+        .lgt {
+            color: black;
+            background-color: #f8f9fa;
+        }
+
+        th:nth-child(1),
+        td:nth-child(1) {
+            width: 5%;
+            border-radius: 10px 0 0 10px;
+        }
+
+        th:nth-child(2),
+        td:nth-child(2) {
+            width: 10%;
+        }
+
+        th:nth-child(3),
+        td:nth-child(3) {
+            width: 15%;
+        }
+
+        th:nth-child(4),
+        td:nth-child(4) {
+            width: 30%;
+        }
+
+        th:nth-child(5),
+        td:nth-child(5) {
+            width: 15%;
+        }
+
+        td:nth-child(5) {
+            color: #5DC7C2;
+        }
+
+        th:nth-child(6),
+        td:nth-child(6) {
+            width: 15%;
+            border-radius: 0 10px 10px 0;
+        }
+
+        td:nth-child(6) {
+            color: #5DC7C2;
+        }
+
+        .btns {
+            flex-grow: 1;
+            justify-content: center;
+            display: flex;
+            gap: 25px;
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <a href="/">HODLINFO</a>
+        <div class="btns">
+            <button class="btn">INR</button>
+            <button class="btn">CUR</button>
+            <button class="btn" onclick="redirectbtn()">BUY BTC</button>
+        </div>
+        <div class="others">
+            <div id="ring-container">
+                <div id="ring"></div>
+                <div id="ring-text">60</div>
+            </div>
+
+            <button class="btn" onclick="redirectTelegram()">Telegram</button>
+
+            <label class="switch">
+                <input type="checkbox" id="checkbox" checked>
+                <span class="slider round"></span>
+            </label>
+
+        </div>
+    </nav>
+    <section class="data">
+        <div class="container">
+            <h1>577</h1>
+            <p>Total Currencies</p>
+        </div>
+        <div class="container">
+            <h1>10</h1>
+            <p>Showed Here</p>
+        </div>
+        <div class="container">
+            <p class="bigp">Highest traded price</p>
+            <h1 class="big">
+                <%= data[0].last %>
+            </h1>
+            <p>
+                <%= data[0].name %>
+            </p>
+        </div>
+        <div class="container">
+            <h1>
+                <%= data[0].volume %>
+            </h1>
+            <p>Volume</p>
+        </div>
+        <div class="container">
+            <h1>
+                <%= data[0].base_unit %>
+            </h1>
+            <p>Base Unit</p>
+        </div>
+    </section>
+
+    <table>
+        <thead>
+            <th class="serial">#</th>
+            <th class="name">Name</th>
+            <th class="last">Last Traded Price</th>
+            <th class="buy">Buy / Sell</th>
+            <th class="Volume">Volume</th>
+            <th class="base">Base Unit</th>
+        </thead>
+        <% for(let i=0;i<data.length;i++){ %>
+            <tbody>
+                <td class="drk">
+                    <%= i+1 %>
+                </td>
+                <td class="drk">
+                    <%= data[i].name %>
+                </td>
+                <td class="drk">
+                    <%= data[i].last %>
+                </td>
+                <td class="drk">
+                    <%= data[i].buy %> / <%= data[i].sell %>
+                </td>
+                <td class="drk">
+                    <%= data[i].volume %>
+                </td>
+                <td class="drk">
+                    <%= data[i].base_unit %>
+                </td>
+            </tbody>
+            <% } %>
+    </table>
+</body>
+<script>
+    function redirectbtn() {
+        window.location.href = "https://wazirx.com/invite/sp7pvbt6?utm_source=finstreet&utm_medium=affiliate&utm_campaign=regnow-btn";
+    }
+
+    function redirectTelegram() {
+        window.location.href = "https://hodlinfo.com/connect/telegram";
+    }
+
+    const toggle_btn = document.querySelector("#checkbox");
+
+    toggle_btn.addEventListener("change", () => {
+        if (!toggle_btn.checked) {
+            document.querySelector(".big").classList.add("bigl");
+            document.querySelectorAll(".btn").forEach(button => {
+                button.classList.add("btnlight");
+            });
+            document.querySelectorAll(".drk").forEach(button => {
+                button.classList.add("lgt");
+            });
+            document.body.classList.add("light");
+        } else {
+            document.querySelector(".big").classList.remove("bigl");
+            document.querySelectorAll(".btn").forEach(button => {
+                button.classList.remove("btnlight");
+            });
+            document.querySelectorAll(".drk").forEach(button => {
+                button.classList.remove("lgt");
+            });
+            document.body.classList.remove("light");
+        }
+    });
+
+    let secondsRemaining = 60;
+
+    function updateRing() {
+        const ring = document.getElementById('ring');
+        const ringText = document.getElementById('ring-text');
+        ring.style.animation = 'none'; // Reset animation
+        void ring.offsetWidth; // Trigger reflow
+        ring.style.animation = `spin ${secondsRemaining}s linear infinite`; // Set animation with updated time
+        ringText.innerText = `${secondsRemaining}`;
+    }
+
+
+    async function makeRequest() {
+        await fetch("/update", {
+            method: "POST",
+        });
+    }
+
+    setInterval(function () {
+        location.reload();
+        secondsRemaining = 60;
+        updateRing();
+    }, 60000);
+
+    setInterval(function () {
+        secondsRemaining--;
+        if (secondsRemaining < 0) {
+            secondsRemaining = 60;
+        }
+        updateRing();
+        // Check if the countdown reaches 5 seconds
+        if (secondsRemaining === 5) {
+            // Make a POST request to the local endpoint using async/await
+            makeRequest();
+        }
+    }, 1000);
+</script>
+
+</html>
