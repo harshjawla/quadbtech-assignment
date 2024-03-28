@@ -64,3 +64,6 @@ app.listen(3000, async () => {
     // console.log(Object.keys(data).length);
     console.log(`Server started on port ${PORT}.`)
 });
+
+
+module.exports = app;
