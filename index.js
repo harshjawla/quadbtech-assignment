@@ -33,7 +33,7 @@ const PORT = 3000;
 
 
 app.get("/", async (req, res) => {
-    await fetch("http://localhost:3000/update",{
+    await fetch("https://hodlinfo-ui.vercel.app/update",{
         method: "POST",
     });
     const response = await Crypto.find();
