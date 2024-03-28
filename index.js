@@ -1,3 +1,4 @@
+require("dotenv").config();
 const express = require("express");
 const mongoose = require("mongoose");
 const ejs = require("ejs");
@@ -5,7 +6,10 @@ const ejs = require("ejs");
 const app = express();
 app.set('view engine', 'ejs');
 
-mongoose.connect("mongodb://127.0.0.1:27017/crypto");
+const URL= process.env.MONGODB_DATABASE_URL;
+const APIURL = process.env.WAZIRX_URL;
+
+mongoose.connect(URL);
 
 function formatNumber(number) {
     return (new Intl.NumberFormat("en-IN").format(number));
@@ -38,7 +42,7 @@ app.get("/", async (req, res) => {
 
 app.post("/update",async (req,res) => {
     await Crypto.deleteMany({});
-    const response = await fetch("https://api.wazirx.com/api/v2/tickers");
+    const response = await fetch(APIURL);
     const data = await response.json();
     let count = 0;
     for (const key in data) {
