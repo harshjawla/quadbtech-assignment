@@ -2,8 +2,10 @@ require("dotenv").config();
 const express = require("express");
 const mongoose = require("mongoose");
 const ejs = require("ejs");
+const path = require("path");
 
 const app = express();
+app.set("views", path.join(__dirname, "views"));
 app.set('view engine', 'ejs');
 
 const URL= process.env.MONGODB_DATABASE_URL;
